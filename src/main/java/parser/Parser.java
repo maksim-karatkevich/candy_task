@@ -1,6 +1,6 @@
-package logic;
+package parser;
 
-import model.Gift;
+import beans.Gift;
 
 /**
  * Created by Maksim_Karatkevich on 6/13/2017.

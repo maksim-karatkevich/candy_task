@@ -1,7 +1,8 @@
-package logic;
+package parser;
 
 import beans.*;
-import model.Gift;
+import logic.CandyFactory;
+import beans.Gift;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 
@@ -74,9 +75,6 @@ public class SimpleHandler implements ContentHandler {
     }
 
     public void endDocument() throws org.xml.sax.SAXException {
-        for (Candy c : gift.getCandies()) {
-            System.out.println(c.toString());
-        }
     }
 
     public void startPrefixMapping(String prefix, String uri) throws org.xml.sax.SAXException {

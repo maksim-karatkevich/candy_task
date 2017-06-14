@@ -1,8 +1,8 @@
-package logic;
+package parser;
 
 import java.io.IOException;
 
-import model.Gift;
+import beans.Gift;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
