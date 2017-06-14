@@ -14,4 +14,11 @@ public class ChocolateCandy extends Candy {
 	public void setChocolateType(ChocolateType chocolateType) {
 		this.chocolateType = chocolateType;
 	}
+
+	@Override
+	public String toString() {
+		return "ChocolateCandy{" +
+				"chocolateType=" + chocolateType +
+				"} " + super.toString();
+	}
 }

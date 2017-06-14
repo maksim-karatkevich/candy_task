@@ -1,27 +1,22 @@
 package model;
 
+import beans.Candy;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import beans.Candy;
 
 /**
  * Created by Maksim_Karatkevich on 6/13/2017.
  */
-public class Gift
-{
-	private List<Candy> candyList;
+public class Gift {
 
-	public Gift() {
-		this.candyList = new ArrayList<Candy>();
-	}
-
-	public List<Candy> getCandyList() {
-		return candyList;
-	}
+	public List<Candy> candies = new ArrayList<>();
 
 	public void addCandy(Candy candy) {
-		this.candyList.add(candy);
+		this.candies.add(candy);
 	}
 
+	public List<Candy> getCandies() {
+		return candies;
+	}
 }

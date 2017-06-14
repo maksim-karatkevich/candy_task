@@ -23,4 +23,12 @@ public class Candy {
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
+
+	@Override
+	public String toString() {
+		return "Candy{" +
+				"price=" + price +
+				", weight=" + weight +
+				'}';
+	}
 }

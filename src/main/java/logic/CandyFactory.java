@@ -3,7 +3,7 @@ package logic;
 import beans.Candy;
 import beans.CandyType;
 import beans.ChocolateCandy;
-import beans.LollopopCandy;
+import beans.LollipopCandy;
 
 /**
  * Created by Maksim_Karatkevich on 6/14/2017.
@@ -16,7 +16,7 @@ public class CandyFactory {
 			case CHOCOLATE_CANDY:
 				return new ChocolateCandy();
 			case LOLLIPOP_CANDY:
-				return new LollopopCandy();
+				return new LollipopCandy();
 		}
 		throw new Exception("Invalid Candy Parameter");
 	}

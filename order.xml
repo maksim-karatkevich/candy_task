@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<gift>-->
-	<candyes>
+<gift>
+	<candies>
 		<candy type="Chocolate_Candy">
 			<price>1.2</price>
 			<weight>0.5</weight>
@@ -19,12 +19,12 @@
 		<candy type="Lollipop_Candy">
 			<price>0.3</price>
 			<weight>0.5</weight>
-			<lollipopTaste>BLACK</lollipopTaste>
+			<lollipopTaste>APPLE</lollipopTaste>
 		</candy>
 		<candy type="Lollipop_Candy">
 			<price>0.9</price>
 			<weight>1.5</weight>
 			<lollipopTaste>CHERRY</lollipopTaste>
 		</candy>
-	</candyes>
-<!--</gift>-->
+	</candies>
+</gift>

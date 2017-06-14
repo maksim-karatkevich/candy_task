@@ -5,5 +5,5 @@ package beans;
  */
 public enum ChocolateType
 {
-	BLACH, WHITE, MILK;
+	BLACK, WHITE, MILK;
 }

@@ -2,10 +2,9 @@ package logic;
 
 import java.io.IOException;
 
+import model.Gift;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
-
-import model.Gift;
 
 /**
  * Created by Maksim_Karatkevich on 6/13/2017.
@@ -15,9 +14,10 @@ public class SAXParser implements Parser {
 	public Gift parse(String fileName) {
 		try {
 			XMLReader reader = XMLReaderFactory.createXMLReader();
-			SimpleHandler contentHandler = new SimpleHandler();
-			reader.setContentHandler(contentHandler);
+			SimpleHandler giftHandler = new SimpleHandler();
+			reader.setContentHandler(giftHandler);
 			reader.parse(fileName);
+            return giftHandler.getGift();
 		}
 		catch (org.xml.sax.SAXException ex) {
 			ex.printStackTrace();
