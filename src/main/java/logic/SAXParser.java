@@ -12,8 +12,6 @@ import model.Gift;
  */
 public class SAXParser implements Parser {
 
-
-
 	public Gift parse(String fileName) {
 		try {
 			XMLReader reader = XMLReaderFactory.createXMLReader();
