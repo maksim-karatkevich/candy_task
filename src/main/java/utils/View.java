@@ -8,10 +8,9 @@ import beans.Gift;
  */
 public class View {
 
-    public static void getGiftPrice(Gift gift) {
-//        gift.getCandies().forEach(value -> System.out.println(value.getPrice()));
-        int result = 0;
-//        gift.getCandies().stream().map(x -> );
-//        Arrays.stream(gift.getCandies())
+    public static void show(Gift gift) {
+        System.out.println(GiftCalculate.getPrice(gift));
+        System.out.println(GiftCalculate.getWeight(gift));
     }
+
 }

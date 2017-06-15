@@ -1,115 +1,89 @@
 package parser;
 
-import beans.*;
-import logic.CandyFactory;
-import beans.Gift;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
+import org.xml.sax.SAXException;
 
-/**
- * Created by Maksim_Karatkevich on 6/13/2017.
- */
+import beans.Candy;
+import beans.ChocolateCandy;
+import beans.ChocolateType;
+import beans.Gift;
+import beans.LollipopCandy;
+import beans.LollipopTaste;
+import logic.CandyFactory;
+
 public class SimpleHandler implements ContentHandler {
 
-    private Candy currentCandy;
-    private Gift gift;
-    private boolean isPrice = false;
-    private boolean isWeight = false;
-    private boolean isChocolateType = false;
-    private boolean isLollipopTaste = false;
+	private Candy currentCandy;
+	private Gift gift;
+	private String currentTag;
 
-    public void startElement(String uri, String localName, String qName, Attributes attributes)
-            throws org.xml.sax.SAXException {
-        String s = qName;
-        if (s.equals("gift")) {
-            this.gift = new Gift();
-        }
-        for (int i = 0; i < attributes.getLength(); i++) {
-            if (s.equals("candy")) {
-                try {
-                    this.currentCandy = CandyFactory.getCandy(attributes.getValue("type"));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        if (s.equals("price")) {
-            isPrice = true;
-        }
-        if (s.equals("weight")) {
-            isWeight = true;
-        }
-        if (s.equals("chocolateType")) {
-            isChocolateType = true;
-        }
-        if (s.equals("lollipopTaste")) {
-            isLollipopTaste = true;
-        }
-    }
+	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+		currentTag = qName;
+		if (qName.equals("gift")) {
+			this.gift = new Gift();
+		} else if (qName.equals("candy")) {
+			try {
+				this.currentCandy = CandyFactory.getCandy(attributes.getValue("type"));
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-    public void endElement(String uri, String localName, String qName) {
-        if (qName.equals("candy")) {
-            gift.addCandy(currentCandy);
-            currentCandy = null;
-        }
-        if (qName.equals("price")) {
-            isPrice = false;
-        }
-        if (qName.equals("weight")) {
-            isWeight = false;
-        }
-        if (qName.equals("chocolateType")) {
-            isChocolateType = false;
-        }
-        if (qName.equals("lollipopTaste")) {
-            isLollipopTaste = false;
-        }
-    }
+	public void endElement(String uri, String localName, String qName) {
+		if (qName.equals("candy")) {
+			gift.addCandy(currentCandy);
+		}
+	}
 
+	public void setDocumentLocator(org.xml.sax.Locator locator) {
 
-    public void setDocumentLocator(org.xml.sax.Locator locator) {
+	}
 
-    }
+	public void startDocument() throws org.xml.sax.SAXException {
+	}
 
-    public void startDocument() throws org.xml.sax.SAXException {
-    }
+	public void endDocument() throws org.xml.sax.SAXException {
+		getGift().candies.forEach(System.out::println);
+	}
 
-    public void endDocument() throws org.xml.sax.SAXException {
-    }
+	public void startPrefixMapping(String prefix, String uri) throws org.xml.sax.SAXException {
+	}
 
-    public void startPrefixMapping(String prefix, String uri) throws org.xml.sax.SAXException {
-    }
+	public void endPrefixMapping(String prefix) throws org.xml.sax.SAXException {
+	}
 
-    public void endPrefixMapping(String prefix) throws org.xml.sax.SAXException {
-    }
+	public void characters(char[] ch, int start, int length) {
+		String element = new String(ch, start, length).trim();
+		if (element.length() != 0 && currentTag != null)
+			switch (currentTag) {
+				case "price":
+					currentCandy.setPrice(Double.parseDouble(element));
+					break;
+				case "weight":
+					currentCandy.setWeight(Double.parseDouble(element));
+					break;
+				case "chocolateType":
+					((ChocolateCandy) currentCandy).setChocolateType(ChocolateType.valueOf(element.toUpperCase()));
+					break;
+				case "lollipopTaste":
+					((LollipopCandy) currentCandy).setLollipopTaste(LollipopTaste.valueOf(element.toUpperCase()));
+					break;
+			}
+	}
 
-    public void characters(char[] ch, int start, int length) {
-        if (isWeight) {
-            currentCandy.setWeight(Double.parseDouble(new String(ch, start, length)));
-            isWeight = false;
-        } else if (isPrice) {
-            currentCandy.setPrice(Double.parseDouble(new String(ch, start, length)));
-            isPrice = false;
-        } else if (isLollipopTaste) {
-            LollipopCandy l = (LollipopCandy) currentCandy;
-            l.setLollipopTaste(LollipopTaste.valueOf(new String(ch, start, length)));
-        } else if (isChocolateType) {
-            ChocolateCandy c = (ChocolateCandy) currentCandy;
-            c.setChocolateType(ChocolateType.valueOf(new String(ch, start, length)));
+	public void ignorableWhitespace(char[] chars, int i, int i1) {
+	}
 
-        }
-    }
+	public void processingInstruction(String s, String s1) {
+	}
 
-    public void ignorableWhitespace(char[] chars, int i, int i1) {
-    }
+	public void skippedEntity(String s) {
+	}
 
-    public void processingInstruction(String s, String s1) {
-    }
-
-    public void skippedEntity(String s) {
-    }
-
-    public Gift getGift() {
-        return this.gift;
-    }
+	public Gift getGift() {
+		return this.gift;
+	}
 }

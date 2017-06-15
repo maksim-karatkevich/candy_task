@@ -10,6 +10,6 @@ public class Runner {
 	public static void main(String[] args) {
 		SAXParser saxParser = new SAXParser();
 		Gift gift = saxParser.parse("order.xml");
-		View.getGiftPrice(gift);
+		View.show(gift);
 	}
 }
