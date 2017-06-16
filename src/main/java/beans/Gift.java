@@ -1,7 +1,5 @@
 package beans;
 
-import beans.Candy;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +12,13 @@ public class Gift {
 
 	public void addCandy(Candy candy) {
 		this.candies.add(candy);
+	}
+
+	@Override
+	public String toString() {
+		return "Gift{" +
+				"candies=" + candies +
+				'}';
 	}
 
 	public List<Candy> getCandies() {

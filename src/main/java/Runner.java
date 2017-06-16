@@ -1,5 +1,7 @@
 import beans.Gift;
-import parser.SAXParser;
+import parser.Parser;
+import parser.ParserFactory;
+import utils.TxtFileReader;
 import utils.View;
 
 /**
@@ -8,8 +10,15 @@ import utils.View;
 public class Runner {
 
 	public static void main(String[] args) {
-		SAXParser saxParser = new SAXParser();
-		Gift gift = saxParser.parse("order.xml");
-		View.show(gift);
+		String parserName = null;
+		try {
+			parserName = TxtFileReader.getParserName();
+			Parser parser = ParserFactory.getParser(parserName);
+			Gift gift = parser.parse("order.xml");
+			View.show(gift);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

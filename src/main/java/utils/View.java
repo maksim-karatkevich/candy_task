@@ -11,6 +11,7 @@ public class View {
     public static void show(Gift gift) {
         System.out.println(GiftCalculate.getPrice(gift));
         System.out.println(GiftCalculate.getWeight(gift));
+        System.out.println(gift.toString());
     }
 
 }

@@ -46,7 +46,7 @@ public class SimpleHandler implements ContentHandler {
 	}
 
 	public void endDocument() throws org.xml.sax.SAXException {
-		getGift().candies.forEach(System.out::println);
+//		getGift().candies.forEach(System.out::println);
 	}
 
 	public void startPrefixMapping(String prefix, String uri) throws org.xml.sax.SAXException {
