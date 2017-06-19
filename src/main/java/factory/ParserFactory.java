@@ -1,4 +1,9 @@
-package parser;
+package factory;
+
+import parser.Parser;
+import parser.ParserType;
+import parser.SAXParser;
+import parser.STAXParser;
 
 /**
  * Created by Maksim_Karatkevich on 6/16/2017.

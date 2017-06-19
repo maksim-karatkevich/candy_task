@@ -1,8 +1,5 @@
 
+view = file;
 
+parser = STAX;
 
-parser=STAX
-parser=SAX
-
-
-htyjtj

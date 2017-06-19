@@ -7,6 +7,14 @@ public class ChocolateCandy extends Candy {
 
 	private ChocolateType chocolateType;
 
+	public ChocolateCandy(){ name = "Custom Chocolate Candy";}
+
+	public ChocolateCandy(ChocolateType chocolateType, double price, double weight) {
+		this.chocolateType = chocolateType;
+		this.price = price;
+		this.weight = weight;
+	}
+
 	public ChocolateType getChocolateType() {
 		return chocolateType;
 	}

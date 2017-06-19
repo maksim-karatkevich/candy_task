@@ -7,5 +7,5 @@ import beans.Gift;
  */
 public interface Parser {
 
-	Gift parse(String fileName);
+	Gift parse(String fileName) throws Exception;
 }

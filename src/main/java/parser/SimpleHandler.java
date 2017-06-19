@@ -10,7 +10,7 @@ import beans.ChocolateType;
 import beans.Gift;
 import beans.LollipopCandy;
 import beans.LollipopTaste;
-import logic.CandyFactory;
+import factory.CandyFactory;
 
 public class SimpleHandler implements ContentHandler {
 

@@ -14,7 +14,7 @@ import beans.ChocolateType;
 import beans.Gift;
 import beans.LollipopCandy;
 import beans.LollipopTaste;
-import logic.CandyFactory;
+import factory.CandyFactory;
 
 /**
  * Created by Maksim_Karatkevich on 6/16/2017.
@@ -45,7 +45,6 @@ public class STAXParser implements Parser {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return gift;
 	}
 
@@ -63,7 +62,7 @@ public class STAXParser implements Parser {
 					}
 					break;
 				case XMLStreamConstants.END_ELEMENT:
-					endElement();
+					endElement(reader);
 					break;
 			}
 		}
@@ -71,7 +70,7 @@ public class STAXParser implements Parser {
 
 	private void startElement(XMLStreamReader reader) throws Exception {
 		currentTag = reader.getLocalName();
-		switch (currentTag) {
+			switch (currentTag) {
 			case GIFT_TAG:
 				this.gift = new Gift();
 				break;
@@ -81,13 +80,9 @@ public class STAXParser implements Parser {
 		}
 	}
 
-	private void endElement() {
-		if (currentTag.equals("chocolateType")) {
+	private void endElement(XMLStreamReader reader) {
+		if (reader.getLocalName().equals("candy")) {
 			gift.addCandy(currentCandy);
-		} else if (currentTag.equals("lollipopTaste")) {
-			gift.addCandy(currentCandy);
-		} else {
-
 		}
 	}
 

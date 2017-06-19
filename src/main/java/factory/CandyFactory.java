@@ -1,9 +1,6 @@
-package logic;
+package factory;
 
-import beans.Candy;
-import beans.CandyType;
-import beans.ChocolateCandy;
-import beans.LollipopCandy;
+import beans.*;
 
 /**
  * Created by Maksim_Karatkevich on 6/14/2017.
@@ -17,6 +14,10 @@ public class CandyFactory {
 				return new ChocolateCandy();
 			case LOLLIPOP_CANDY:
 				return new LollipopCandy();
+			case ALENKA:
+				return new ChocolateCandy(ChocolateType.MILK, 1.1, 1.5);
+			case CHUPACHUPS:
+				return new LollipopCandy(LollipopTaste.CHERRY, 1.7, 2.3);
 		}
 		throw new Exception("Invalid Candy Parameter");
 	}

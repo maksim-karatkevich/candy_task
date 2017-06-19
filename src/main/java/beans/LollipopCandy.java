@@ -7,6 +7,16 @@ public class LollipopCandy extends Candy {
 
     private LollipopTaste lollipopTaste;
 
+    public LollipopCandy() {
+        name = "Custom Lollipop Candy";
+    }
+
+    public LollipopCandy(LollipopTaste lollipopTaste, double price, double weight) {
+        this.lollipopTaste = lollipopTaste;
+        this.price = price;
+        this.weight = weight;
+    }
+
     public LollipopTaste getLollipopTaste() {
         return lollipopTaste;
     }
