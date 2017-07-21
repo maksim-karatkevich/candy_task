@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  */
 public class TxtFileReader {
 
-    private static final String PATH = "E:\\ideaProject\\taf_Framework_wiki\\candy_task\\src\\main\\resources\\config.txt";
+    private static final String PATH = "src\\main\\resources\\config.txt";
     private static FileReader fileReader;
     private static BufferedReader bufferedReader;
 

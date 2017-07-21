@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class FileView implements View {
 
-    private String filePath = "E:\\ideaProject\\taf_Framework_wiki\\candy_task\\src\\main\\resources\\fileView.txt";
+    private String filePath = "src\\main\\resources\\fileView.txt";
 
     @Override
     public void printGift(Gift gift) {
